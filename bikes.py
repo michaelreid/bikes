@@ -21,28 +21,53 @@ class Shop(object):
         return margin
 
 class Customer(object):
-    # Define a customer who has a name and who has a fund of dollars
-    # to buy a bike. If no value for fund is supplied, set to $500
-    def __init__(self, name, fund):
+    # Define a customer who has a name and who has a budget of dollars
+    # to buy a bike. If no value for budget is supplied, set to $500
+    def __init__(self, name, budget):
         self.name = name
         self.ride = None # Customers initial ride is none
-        self.fund = fund if fund is not None else 500
+        self.budget = budget if budget is not None else 500
 
 
 
-bike1 = Bicycle("Reid", 10, 500)
-print bike1.model
-print bike1.weight
-print bike1.cost
+# Create 1 shop
 shop1 = Shop("Reid Cycles")
-print shop1.name
-print shop1.inventory
-print shop1.profit
+
+# Create 6 different bikes and add to the shop's inventory
+bike1 = Bicycle("Black Racer 200F", 10, 100)
 shop1.inventory.append(bike1)
-print shop1.inventory
-shop1.sell(bike1)
-print shop1.profit
-jake = Customer("Jake", 900)
-print jake.name
-print jake.ride
-print jake.fund
+bike2 = Bicycle("Black Racer 250G", 8, 400)
+shop1.inventory.append(bike2)
+bike3 = Bicycle("Black Racer 370X", 7.75, 700)
+shop1.inventory.append(bike3)
+bike4 = Bicycle("Black Mountain Bike 500C", 12, 300)
+shop1.inventory.append(bike4)
+bike5 = Bicycle("Black Mountain Bike 700B", 11, 400)
+shop1.inventory.append(bike5)
+bike6 = Bicycle("Black Mountain Bike 900A", 10, 800)
+shop1.inventory.append(bike6)
+
+# Create 3 customers with 3 different budgets
+jake = Customer("Jake", 200)
+john = Customer("John", 500)
+jeff = Customer("Jeff", 1000)
+
+# Loop through inventory
+def bikes_in_budget(customer, shop):
+    # print customer's name
+    print customer.name
+    # create a list of bikes within the customer's budget
+    can_afford = []
+    # loop through the shop's inventory and check if
+    # customer can afford the bikes
+    for bikes in shop.inventory:
+        if (bikes.cost * 1.2) < customer.budget:
+            can_afford.append(bikes.model)
+    # print a list of the bikes within the customer's budget     
+    print can_afford
+
+bikes_in_budget(jake, shop1)
+bikes_in_budget(john, shop1)
+bikes_in_budget(jeff, shop1)
+    
+        
