@@ -30,7 +30,7 @@ class Customer(object):
 
 
 
-# Create 1 shop
+# Create 1 bicycle shop
 shop1 = Shop("Reid Cycles")
 
 # Create 6 different bikes and add to the shop's inventory
@@ -55,16 +55,15 @@ jeff = Customer("Jeff", 1000)
 # Loop through inventory
 def bikes_in_budget(customer, shop):
     # print customer's name
-    print customer.name
-    # create a list of bikes within the customer's budget
-    can_afford = []
+    print 'Customer Name is: ' + customer.name
+    print 'Customer Budget is: $' + str(customer.budget)
     # loop through the shop's inventory and check if
     # customer can afford the bikes
-    for bikes in shop.inventory:
-        if (bikes.cost * 1.2) < customer.budget:
-            can_afford.append(bikes.model)
-    # print a list of the bikes within the customer's budget     
-    print can_afford
+    for bike in shop.inventory:
+        bike_retail_price = bike.cost * 1.2
+        if bike_retail_price < customer.budget:
+            print bike.model + ': RRP$' + str(bike_retail_price)
+
 
 bikes_in_budget(jake, shop1)
 bikes_in_budget(john, shop1)
