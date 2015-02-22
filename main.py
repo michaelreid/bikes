@@ -5,7 +5,15 @@
 #
 # February 2015 version 2.0
 
-import bicycles
+
+# TODO: make the main.py file import the classes from the bicycles.py file
+# STUCK AT THIS POINT
+# TRIED:
+# import bicycles
+#
+# import Customer etc.
+#
+from bikes import *
 
 # Create 1 bicycle shop
 shop1 = Shop("Reid Cycles")
